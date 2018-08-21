@@ -1,0 +1,21 @@
+<nav>
+  <h1 class="nav-item">Weather</h1>
+  <img src='assets/images/refresh.png' class="nav-item refresh" (click)="getData()"/>
+  <a routerLink="/settings" class="nav-item">settings</a>
+</nav>
+<hr/>
+
+<table class="cities">
+  <tr>
+    <td>City id</td>
+    <td>City name</td>
+    <td>Current Temperature</td>
+    <td>Current Weather</td>
+  </tr>
+  <tr *ngFor="let city of cities">
+    <td class="badge">{{city.id}}</td>
+    <td class="badge">{{city.name}}</td>
+    <td class="badge">{{city.temperature}}</td>
+    <td class="badge">{{city.weather}}</td>
+  </tr>
+</table>

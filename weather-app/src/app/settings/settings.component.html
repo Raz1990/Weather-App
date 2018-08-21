@@ -1,0 +1,14 @@
+<button (click)="goBack()">go back</button>
+
+<table class="cities">
+  <tr>
+    <td>Display City</td>
+    <td>City name</td>
+  </tr>
+  <tr *ngFor="let city of cities">
+    <td class="badge">
+      <input type="checkbox" [checked]="city.show === true" (change)="updateCityShow(city.id)">
+    </td>
+    <td class="badge">{{city.name}}</td>
+  </tr>
+</table>
