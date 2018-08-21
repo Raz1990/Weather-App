@@ -22,18 +22,19 @@ export class HomeComponent implements OnInit {
     const filterCities = [];
     this.cityService.getCities()
     .subscribe((cities) => {
-      for (const city of cities) {
+      this.cities = cities.json().value;
+      for (const city of this.cities) {
         if (city.show) {
           filterCities.push(city);
         }
       }
-      });
       this.cities = filterCities;
       this.getData();
+      });
     }
 
   getData(): void {
-      this.cityService.updateCityTemp();
+      this.cityService.updateCityTemp(this.cities);
   }
 
 }

@@ -15,23 +15,22 @@ export class CityService {
   //   { id: 2, name: 'Tel Aviv', show: true, weatherId: 293397 },
   //   { id: 3, name: 'Holon',    show: true, weatherId: 294751 }];
 
-  cities: City[] = [];
+  // cities: City[] = [];
 
   constructor(private weatherService: WeatherService,
               private serverAPI: ServerAPIService) { }
 
-  getCities(): Observable<City[]> {
-    // return of(this.cities);
-    return this.serverAPI.getCities();
+  getCities() {
+    const res = this.serverAPI.getCities();
+    return res;
   }
 
-  updateCityShow(id: number) {
-    const chosenCity = this.cities[id] ;
-    chosenCity.show = !chosenCity.show;
+  updateCityShow(city: City) {
+    city.show = !city.show;
   }
 
-  updateCityTemp() {
-    for (const city of this.cities) {
+  updateCityTemp(cities) {
+    for (const city of cities) {
       this.weatherService.getWeatherData(city.weatherId)
         .subscribe(data => {
           const jsonData = data.json();
